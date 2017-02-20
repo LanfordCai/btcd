@@ -69,6 +69,10 @@ func HashMerkleBranches(left *chainhash.Hash, right *chainhash.Hash) *chainhash.
 func BuildMerkleTreeStore(transactions []*btcutil.Tx) []*chainhash.Hash {
 	// Calculate how many entries are required to hold the binary merkle
 	// tree as a linear array and create an array of that size.
+
+	// transactions 就是满二叉树的叶子数，arraySize 为该二叉树所有节点的数目。
+	// 已知叶子数为 n, 设树高度为 h, 有 2^(h-1) = n，则满二叉树的总节点数为 2^h - 1 = 2n - 1
+	// nextPoT 就是叶子数
 	nextPoT := nextPowerOfTwo(len(transactions))
 	arraySize := nextPoT*2 - 1
 	merkles := make([]*chainhash.Hash, arraySize)

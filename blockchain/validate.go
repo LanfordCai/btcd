@@ -19,10 +19,12 @@ import (
 )
 
 const (
+	// MARK: 签名运算的最大次数和 block 中所能包含信息的上限有关？
 	// MaxSigOpsPerBlock is the maximum number of signature operations
 	// allowed for a block.  It is a fraction of the max block payload size.
 	MaxSigOpsPerBlock = wire.MaxBlockPayload / 50
 
+	// MARK: block 的时间快于当前时间是什么情况？
 	// MaxTimeOffsetSeconds is the maximum number of seconds a block time
 	// is allowed to be ahead of the current time.  This is currently 2
 	// hours.
